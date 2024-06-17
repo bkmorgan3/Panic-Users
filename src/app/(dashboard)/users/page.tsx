@@ -8,7 +8,7 @@ const getData = async () => {
 
 const UsersPage = async () => {
     const users = await getData()
-    return <div><UsersList users={users} /></div>
+    return <div className="w-screen h-screen bg-black text-white"><UsersList users={users} /></div>
 }
 
 export default UsersPage
