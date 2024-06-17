@@ -9,7 +9,7 @@ importers:
   .:
     dependencies:
       '@prisma/client':
-        specifier: 5.15.0
+        specifier: ^5.15.0
         version: 5.15.0(prisma@5.15.0)
       '@vercel/postgres':
         specifier: ^0.8.0
