@@ -9,7 +9,8 @@ export const metadata: Metadata = {
   title: "Panic",
   description: "our users app",
   other: {
-    'google-site-verification': 'google4a2b699c508ec1af.html'
+    name: 'google-site-verification',
+    content: 'google4a2b699c508ec1af.html'
   }
 };
 
@@ -26,7 +27,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <meta name="google-site-verification" content="google4a2b699c508ec1af.html" />
+        <meta name="name" content="google-site-verification" />
+        <meta name="content" content="google4a2b699c508ec1af.html" />
       </head>
       <body className={inter.className}>
         <header>
