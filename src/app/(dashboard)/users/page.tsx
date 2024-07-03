@@ -3,6 +3,7 @@ import UsersList from '../../../../components/UsersList'
 
 const getData = async () => {
     const users = await prisma.user.findMany({})
+    console.log('users page', users)
     return users
 }
 
