@@ -1,5 +1,6 @@
 import {prisma} from '../../../../lib/prisma'
-import UsersList from '../../../../components/UsersList'
+import { columns } from '@/app/columns'
+import { DataTable } from '@/components/ui/data-table'
 
 const getData = async () => {
     const users = await prisma.user.findMany({})
@@ -8,7 +9,11 @@ const getData = async () => {
 
 const UsersPage = async () => {
     const users = await getData()
-    return <div className="w-screen h-screen bg-black text-white"><UsersList users={users} /></div>
+    return (
+        <main className="flex justify-center">
+            <DataTable columns={columns} data={users} />
+        </main>
+    )
 }
 
 export default UsersPage

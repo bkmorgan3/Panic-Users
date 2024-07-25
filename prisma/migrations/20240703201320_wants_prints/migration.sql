@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "User" ALTER COLUMN "wantsPrints" DROP DEFAULT,
+ALTER COLUMN "wantsPrints" SET DATA TYPE TEXT;

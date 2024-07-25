@@ -1,6 +1,7 @@
+import { getSheetsData } from "../../lib/sheets";
 
-
-export default function Home() {
+export default async function Home() {
+  const data = await getSheetsData()
   return (
     <main className="w-screen h-screen bg-black flex justify-center items-center text-white">
       <div className="w-full max-w-[600px] mx-auto">
