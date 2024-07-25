@@ -4,7 +4,9 @@ import { prisma } from "./prisma"
 
 export async function getSheetsData() {
     const jwt = new google.auth.JWT(
-        keys.client_email, '', keys.private_key.replace(/\\n/g, 'n'), ['https://www.googleapis.com/auth/spreadsheets.readonly']
+        process.env.client_email, 
+        '',
+         process.env.private_key.replace(/\\n/g, 'n'), ['https://www.googleapis.com/auth/spreadsheets.readonly']
     )
     const sheets = google.sheets({version: "v4", auth: jwt})
     const range = "Form Responses 1!A2:J152"
