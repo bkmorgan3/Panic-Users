@@ -1,6 +1,7 @@
 import User from "./User"
+import { UserProps } from "../src/app/types"
 
-const UsersList = ({users}) => {
+const UsersList = ({users}:UserProps[]) => {
     return (
         <div>
             {users.map(user => (

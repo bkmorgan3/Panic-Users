@@ -1,9 +1,9 @@
 "use client"
 
 import { ColumnDef } from "@tanstack/react-table"
-import { AUser } from "./types"
+import { UserProps } from "./types"
 
-export const columns: ColumnDef<AUser>[] = [
+export const columns: ColumnDef<UserProps>[] = [
     {
         accessorKey: "name",
         header: "Name"
