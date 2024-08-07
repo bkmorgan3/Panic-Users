@@ -1,4 +1,6 @@
+import ImageForm from "@/components/ui/ImageForm"
 import { prisma } from "../../../../../lib/prisma"
+
 
 const getOneUser = async (id: string) => {
     const user = await prisma.user.findUnique({
@@ -21,8 +23,8 @@ export default async function UserPage({params}) {
    }
  
     return(
-        <div className="h-screen bg-stone-50">
-           <h1 className="text-center text-2xl ">User Info</h1> 
+        <div  className="h-screen bg-stone-50 pt-4">
+           <h1 className="text-center text-2xl">User Info</h1> 
             <div className="mx-auto mt-16 max-w-lg h-96 shadow-md rounded-md bg-slate-50">
              <h2 className="text-center">{user.name}</h2>
                 <p className="text-center">{user.email}</p>
@@ -32,11 +34,7 @@ export default async function UserPage({params}) {
 
                 <section className="mx-auto mt-8 flex flex-col items-center content-center">
                     <p>Upload photos here--- COMING SOON</p>
-                    <form className="flex flex-col">
-                        <input type="file" disabled name="file" />
-                        <input type="submit" disabled value="This Doesnt Work Yet" />
-                        {/* <button type="submit">BUtton</button> */}
-                    </form>
+                    <ImageForm />
                 </section>
           </div>
         </div>
