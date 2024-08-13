@@ -16,6 +16,7 @@ export const metadata: Metadata = {
 
 const links = [
   {href: '/', label: 'Home'},
+  {href: '/events', label: 'Events'},
   {href: '/users', label: 'Users'}
 ]
 
@@ -29,7 +30,7 @@ export default function RootLayout({
       <head>
         <meta name="google-site-verification" content="pqb_W89tefyL7koBON2BM_XWbZZJM1FSTUTwcpb-VFw" />
       </head>
-      <body className={inter.className}>
+      <body className={`${inter.className} dark text-foreground`}>
         <header>
           <nav>
             <ul className="bg-black text-white flex justify-end">

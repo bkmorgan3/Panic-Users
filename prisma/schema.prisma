@@ -11,7 +11,7 @@ datasource db {
 model User {
   id            String   @id @default(cuid())
   createdAt     DateTime @default(now())
-  phone         String   @unique
+  phone         String?
   name          String
   dogName       String
   breedAndColor String
@@ -21,6 +21,20 @@ model User {
   sent          Boolean  @default(false)
   match         Boolean  @default(false)
   role          Role     @default(USER)
+  events        Event[]
+}
+
+model Event {
+  id       String   @id @default(cuid())
+  name     String
+  address  String
+  address2 String?
+  city     String
+  State    String
+  date     DateTime
+
+  userId String
+  users  User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 enum Role {
