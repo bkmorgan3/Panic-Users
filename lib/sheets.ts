@@ -26,5 +26,19 @@ export async function getSheetsData() {
 }
 
 export async function saveUserData(users) {
-   console.log(users)
+   await Promise.all(users.map(async (user) => {
+    await prisma.user.create({
+        data: {
+           phone: user[1],
+           name: user[2],
+           dogName: user[3],
+           breedAndColor: user[4],
+           email: user[5],
+           wantsPrints: user[6],
+           edited: JSON.parse(user[7].toLowerCase()),
+           sent: JSON.parse(user[8].toLowerCase()),
+           match: JSON.parse(user[9].toLowerCase()),
+        }
+    })
+   }))
 }   
