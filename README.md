@@ -6,3 +6,6 @@ The need for this app came from an event I worked where people signed up with Go
 - **NextJS**
 - **React** 
 - **PostgresQL**
+
+### Future Goals
+I am expanding on the idea to make user registration and matching users with their dogs easier.
