@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
+import { ClerkProvider } from "@clerk/nextjs"
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,26 +27,28 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <head>
-        <meta name="google-site-verification" content="pqb_W89tefyL7koBON2BM_XWbZZJM1FSTUTwcpb-VFw" />
-      </head>
-      <body className={`${inter.className} dark text-foreground`}>
-        <header>
-          <nav>
-            <ul className="bg-black text-white flex justify-end">
-              {links.map(link => (
-                <li className="mr-4">
-                  <Link href={link.href}>{link.label}</Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        </header>
-        <div>
-          {children}
-        </div>    
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <head>
+          <meta name="google-site-verification" content="pqb_W89tefyL7koBON2BM_XWbZZJM1FSTUTwcpb-VFw" />
+        </head>
+        <body className={`${inter.className} dark text-foreground`}>
+          <header>
+            <nav>
+              <ul className="bg-black text-white flex justify-end">
+                {links.map(link => (
+                  <li className="mr-4">
+                    <Link href={link.href}>{link.label}</Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </header>
+          <div>
+            {children}
+          </div>    
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
