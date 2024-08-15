@@ -1,9 +1,19 @@
 import { prisma } from "../lib/prisma";
 
 export const insertEvent = async(data) => {
-    console.log("INSERTING")
     try {
-        const event = await prisma.event.create({ data })
+        const event = await prisma.event.create({
+            
+                data: {
+                    name: data.name,
+                    address: data.address,
+                    address2: data.address2,
+                    city: data.city,
+                    state: data.state,
+                    date: new Date(data.date),
+                  
+                }
+            })
             return event
     } catch(e) {
         console.log(e)
