@@ -21,6 +21,7 @@ model User {
   sent          Boolean  @default(false)
   match         Boolean  @default(false)
   role          Role     @default(USER)
+  clerkId       String?  @unique
 }
 
 model Event {
