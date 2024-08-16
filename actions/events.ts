@@ -2,6 +2,7 @@
 import { prisma } from "../lib/prisma";
 import { z } from "zod";
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 import { insertEvent } from "../lib/eventHelpers";
 
 const projectSchema = z.object({
@@ -23,7 +24,7 @@ export const createEvent = async(prevState: any, formData: FormData) => {
         state: formData.get("state"),
         date: formData.get("date"),
     })
-    console.log("dat", data)
+   
     try {
         const event = await insertEvent(data)
     } catch(e) {
@@ -32,4 +33,5 @@ export const createEvent = async(prevState: any, formData: FormData) => {
     }
 
     revalidatePath("/events")
+    redirect("/events")
 }
