@@ -19,3 +19,22 @@ export const insertEvent = async(data) => {
         console.log(e)
     }
 }
+
+export const insertUser = async(data) => {
+    console.log("DATA", data)
+    try {
+        await prisma.user.create({
+            data: {
+                dogName: data.petname,
+                name: data.name,
+                phone: data.phone,
+                breedAndColor: data.breed,
+                email: data.email,
+                wantsPrints: 'No',
+                clerkId: data.clerkId
+            }
+        })
+    } catch(e) {
+        console.log(e)
+    }
+}

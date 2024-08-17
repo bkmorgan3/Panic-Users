@@ -1,29 +1,28 @@
+import NewUserForm from "../../../components/NewUserForm"
 import { prisma } from "../../../lib/prisma"
 import { auth, currentUser } from "@clerk/nextjs/server"
 
-const createNewUser = async() => {
+const addClerkId = async() => {
     // 1. Look for ClerkID because if there is clerkID there is email.
     // 2. if no clerkid, lookup by email
-    // 3. if no email create new user with formData
-    //  else update user with clerkId.
 
     const user = await currentUser()
-    console.log(`user ${user?.emailAddresses[0].emailAddress}`)
+    // Find a user by clerkId
     const match = await prisma.user.findUnique({
         where: {
             clerkId: user.id as string
         }
     })
+    console.log(match)
+
     const isReturning = await prisma.user.findUnique({
         where: {
             email: user?.emailAddresses[0].emailAddress
         }
     })
-    console.log("MATCH", match)
     if(!match) {
-        console.log("no match")
+        // Attach ClerkID to existing User
         if(isReturning) {
-            console.log(`Returning user needs to have ${user.id} added`)
             await prisma.user.update({
                 where: {
                     email: user?.emailAddresses[0].emailAddress
@@ -33,16 +32,13 @@ const createNewUser = async() => {
                 }
             })
         }
-        // await prisma.user.create({
-        //     data: {
-        //         clerkId: user?.id,
-        //         email: user?.emailAddresses[0].emailAddress
-        //     }
-        // })
     }
+    return user
 }
 
-export default function Page() {
-    createNewUser()
-    return 'New User'
+export default async function Page() {
+    const user = await addClerkId()
+    return (
+        <NewUserForm clerkId={user?.id} userEmail={user?.emailAddresses[0].emailAddress} />
+    )
 }
