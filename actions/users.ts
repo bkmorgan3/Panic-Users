@@ -1,6 +1,5 @@
 'use server'
 import { z } from "zod";
-import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { insertUser } from "../lib/eventHelpers";
 
@@ -32,4 +31,5 @@ export const createUser = async (userEmail:string, formData:FormData) => {
         console.log(e)
         return {message: "Failed to create user"}
     }
+    redirect("/events")
 }   

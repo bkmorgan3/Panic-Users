@@ -5,7 +5,13 @@ import { auth, currentUser } from "@clerk/nextjs/server"
 
 
 const getData = async () => {
-    const events = await prisma.event.findMany({})
+    const events = await prisma.event.findMany({
+        orderBy: [
+            {
+                date: "desc"
+            }
+        ]
+    })
 
     return events
 }
