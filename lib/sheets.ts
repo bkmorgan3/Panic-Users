@@ -18,7 +18,7 @@ export async function getSheetsData() {
             })
             return res.data.values
         } catch(err) {
-            console.error("Error fetching Sheets Data: ", err)
+            console.log("Error fetching Sheets Data: ", err)
             return []
         }
     }

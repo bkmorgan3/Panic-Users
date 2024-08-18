@@ -23,7 +23,6 @@ export const createUser = async (userEmail:string, formData:FormData) => {
         email: userEmail,
         clerkId: formData.get("clerkId")
     })
-    console.log("NEW DATA", data)
 
     try {
         const user = await insertUser(data)

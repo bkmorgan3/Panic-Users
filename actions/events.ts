@@ -28,7 +28,7 @@ export const createEvent = async(prevState: any, formData: FormData) => {
     try {
         const event = await insertEvent(data)
     } catch(e) {
-        console.error(e)
+        console.log(e)
         return {message: "failed to create event"}
     }
 

@@ -13,7 +13,6 @@ const addClerkId = async() => {
             clerkId: user.id as string
         }
     })
-    console.log(match)
 
     const isReturning = await prisma.user.findUnique({
         where: {
