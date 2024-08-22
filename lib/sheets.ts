@@ -3,11 +3,11 @@ import keys from "../keys.json"
 import { prisma } from "./prisma"
 
 export async function getSheetsData() {
-    if (process.env.private_key) {
+    if (process.env.PRIVATE_KEY) {
         const jwt = new google.auth.JWT(
-            keys.client_email, 
+            process.env.CLIENT_EMAIL, 
             '',
-             keys.private_key.replace(/\\n/g, 'n'), ['https://www.googleapis.com/auth/spreadsheets.readonly']
+             process.env.PRIVATE_KEY.replace(/\\n/g, 'n'), ['https://www.googleapis.com/auth/spreadsheets.readonly']
         )
         const sheets = google.sheets({version: "v4", auth: jwt})
         const range = "Form Responses 1!A2:J152"
@@ -39,6 +39,6 @@ export async function saveUserData(users) {
            sent: JSON.parse(user[8].toLowerCase()),
            match: JSON.parse(user[9].toLowerCase()),
         }
-    })
+     })
    }))
 }   
