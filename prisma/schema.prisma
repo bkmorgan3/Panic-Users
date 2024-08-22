@@ -11,7 +11,7 @@ datasource db {
 model User {
   id            String   @id @default(cuid())
   createdAt     DateTime @default(now())
-  phone         String   @unique
+  phone         String?
   name          String
   dogName       String
   breedAndColor String
@@ -20,16 +20,30 @@ model User {
   edited        Boolean  @default(false)
   sent          Boolean  @default(false)
   match         Boolean  @default(false)
-  images        Image[]
+  role          Role     @default(USER)
+  clerkId       String?  @unique
 }
 
-model Image {
-  id        String   @id @default(cuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+model Event {
+  id       String   @id @default(cuid())
+  name     String
+  address  String
+  address2 String?
+  city     String
+  state    String
+  date     DateTime
+}
 
-  userId String
-  user   User   @relation(fields: [userId], references: [id])
+// model UsersOnEvents {
+//   event   Event  @relation(fields: [eventId], references: [id])
+//   eventId String
+//   user    User   @relation(fields: [userId], references: [id])
+//   userId  String
 
-  @@unique([userId, id])
+//   @@id([eventId, userId])
+// }
+
+enum Role {
+  USER
+  ADMIN
 }

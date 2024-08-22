@@ -1,7 +1,6 @@
 'use client'
 
 const submitPhotos = async () => {
-    console.log("submitting")
 }
 
 export default function SubmitButton() {
