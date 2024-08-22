@@ -3,11 +3,11 @@ import keys from "../keys.json"
 import { prisma } from "./prisma"
 
 export async function getSheetsData() {
-    if (process.env.private_key) {
+    if (process.env.PRIVATE_KEY) {
         const jwt = new google.auth.JWT(
-            process.env.client_email, 
+            process.env.CLIENT_EMAIL, 
             '',
-             process.env.private_key.replace(/\\n/g, 'n'), ['https://www.googleapis.com/auth/spreadsheets.readonly']
+             process.env.PRIVATE_KEY.replace(/\\n/g, 'n'), ['https://www.googleapis.com/auth/spreadsheets.readonly']
         )
         const sheets = google.sheets({version: "v4", auth: jwt})
         const range = "Form Responses 1!A2:J152"
@@ -18,9 +18,27 @@ export async function getSheetsData() {
             })
             return res.data.values
         } catch(err) {
-            console.error("Error fetching Sheets Data: ", err)
+            console.log("Error fetching Sheets Data: ", err)
             return []
         }
     }
 
 }
+
+export async function saveUserData(users) {
+   await Promise.all(users.map(async (user) => {
+    await prisma.user.create({
+        data: {
+           phone: user[1],
+           name: user[2],
+           dogName: user[3],
+           breedAndColor: user[4],
+           email: user[5],
+           wantsPrints: user[6],
+           edited: JSON.parse(user[7].toLowerCase()),
+           sent: JSON.parse(user[8].toLowerCase()),
+           match: JSON.parse(user[9].toLowerCase()),
+        }
+     })
+   }))
+}   
