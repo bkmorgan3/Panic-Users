@@ -22,6 +22,8 @@ model User {
   match         Boolean  @default(false)
   role          Role     @default(USER)
   clerkId       String?  @unique
+  event         Event    @relation(fields: [eventId], references: [id])
+  eventId       String   @default("clztbhmg30002taeh3gcppq3m")
 }
 
 model Event {
@@ -32,16 +34,8 @@ model Event {
   city     String
   state    String
   date     DateTime
+  users    User[]
 }
-
-// model UsersOnEvents {
-//   event   Event  @relation(fields: [eventId], references: [id])
-//   eventId String
-//   user    User   @relation(fields: [userId], references: [id])
-//   userId  String
-
-//   @@id([eventId, userId])
-// }
 
 enum Role {
   USER
