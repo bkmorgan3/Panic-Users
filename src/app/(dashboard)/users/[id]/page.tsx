@@ -23,9 +23,9 @@ export default async function UserPage({params}) {
    }
  
     return(
-        <div  className="h-screen bg-stone-50 pt-4">
+        <div  className="h-screen pt-4">
            <h1 className="text-center text-2xl">User Info</h1> 
-            <div className="mx-auto mt-16 max-w-lg h-96 shadow-md rounded-md bg-slate-50">
+            <div className="mx-auto mt-16 max-w-lg h-96 shadow-md rounded-md ">
              <h2 className="text-center">{user.name}</h2>
                 <p className="text-center">{user.email}</p>
              <p className="text-center">{formatPhoneNumber(user?.phone)}</p>

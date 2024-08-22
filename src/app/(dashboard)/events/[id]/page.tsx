@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { prisma } from "../../../../../lib/prisma"
 
 const getUsersFromEvent = async (id: string) => {
@@ -24,8 +25,21 @@ export default async function EventPage({params}) {
     const users = await getUsersFromEvent(id)
     const eventData = await getEventData(id)
     return (
-        <div>
+        <div className="text-center">
             <h2>{eventData.name}</h2>
+
+            <div>
+                <h2>Attendees</h2>
+
+                <p className="mb-10">Maybe this section should be a little blurb or something about the event</p>
+                {users.map((user) => (
+                    <div>
+                        <Link href={`/users/${user.id}`}>
+                            <p>{user.name}</p>
+                        </Link>
+                    </div>
+                ))}
+            </div>
         </div>
     )
 }
