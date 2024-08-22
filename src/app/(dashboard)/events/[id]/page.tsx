@@ -23,7 +23,6 @@ export default async function EventPage({params}) {
    const {id} = params
     const users = await getUsersFromEvent(id)
     const eventData = await getEventData(id)
-    console.log(eventData)
     return (
         <div>
             <h2>{eventData.name}</h2>
