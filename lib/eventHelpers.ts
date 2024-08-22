@@ -27,7 +27,7 @@ export const insertUser = async(data) => {
                 phone: data.phone,
                 breedAndColor: data.breed,
                 email: data.email,
-                wantsPrints: 'No',
+                wantsPrints: data.prints,
                 clerkId: data.clerkId
             }
         })
