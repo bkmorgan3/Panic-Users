@@ -26,12 +26,12 @@ export default async function EventPage({params}) {
     const eventData = await getEventData(id)
     return (
         <div className="text-center">
-            <h2>{eventData.name}</h2>
+            <h2 className="text-2xl mb-4">{eventData.name}</h2>
 
             <div>
-                <h2>Attendees</h2>
-
                 <p className="mb-10">Maybe this section should be a little blurb or something about the event</p>
+
+                <h2 className="text-2xl mb-2">Attendees</h2>
                 {users.map((user) => (
                     <div>
                         <Link href={`/users/${user.id}`}>
