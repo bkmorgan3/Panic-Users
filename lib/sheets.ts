@@ -41,10 +41,3 @@ export async function saveUserData(users) {
         }
      })
    }))
-}   
-
-// export const async function addUsersToEvent() {
-//     await Promise.all(users.map(async (user) => {
-
-//     }))
-// }

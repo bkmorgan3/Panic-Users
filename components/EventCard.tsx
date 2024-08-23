@@ -1,3 +1,4 @@
+
 import Link from "next/link"
 
 export const EventCard = ({event}) => {
@@ -10,6 +11,7 @@ export const EventCard = ({event}) => {
             <div>{event.city}</div>
             <div>{event.state}</div>
             <span>{date}</span>
+
         </div>
     )
 }

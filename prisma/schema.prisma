@@ -24,6 +24,7 @@ model User {
   clerkId       String?  @unique
   event         Event    @relation(fields: [eventId], references: [id])
   eventId       String   @default("clztbhmg30002taeh3gcppq3m")
+
 }
 
 model Event {
@@ -35,7 +36,6 @@ model Event {
   state    String
   date     DateTime
   users    User[]
-}
 
 enum Role {
   USER
