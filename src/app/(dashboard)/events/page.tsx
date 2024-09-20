@@ -35,7 +35,7 @@ export default async function EventsPage() {
         {user?.role === 'ADMIN' && 
         <Link href={"/events/create"}>Create New Event</Link>
     }
-        <div className="flex mt-10 flex-wrap mx-3.5">
+        <div className="flex mt-10 flex-wrap mx-3.5 justify-center">
             {events.map(event => (
                 <EventCard key={event.id} event={event} />
             ))}
