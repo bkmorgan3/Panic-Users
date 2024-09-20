@@ -2,7 +2,6 @@ import Link from "next/link"
 import { prisma } from "../../../../../lib/prisma"
 
 const getUsersFromEvent = async (id: string) => {
-    console.log("fetch", id)
     const event = await prisma.user.findMany({
         where: {
             eventId: id
