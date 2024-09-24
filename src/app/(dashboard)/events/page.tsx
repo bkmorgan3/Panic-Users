@@ -17,13 +17,13 @@ const getData = async () => {
 }
 const getUserInfo = async () => {
     const {userId} = auth()
-
+    if (!userId) return null
     const currentUser = await prisma.user.findUnique({
         where: {
             clerkId: userId
         }
     })
-    return currentUser
+    return currentUser 
  }
 
 export default async function EventsPage() {
@@ -32,7 +32,7 @@ export default async function EventsPage() {
     return (
     <div className="w-screen h-screen bg-black text-white flex flex-col items-center">
         <h2 className="text-4xl">Our Events</h2>
-        {user?.role === 'ADMIN' && 
+        {user && user?.role === 'ADMIN' && 
         <Link href={"/events/create"}>Create New Event</Link>
     }
         <div className="flex mt-10 flex-wrap mx-3.5">
